@@ -72,26 +72,34 @@ namespace HotDogLover.Controllers
             }
         }
 
-        // GET: Profile/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Profile/AddDog/5
+        public ActionResult CreateDog(int id)
         {
+            ViewBag.profileID = id;
             return View();
         }
 
-        // POST: Profile/Delete/5
+        // POST: Profile/EditDog/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        //public ActionResult Create([Bind(Include = "StudentID,Name,Email,Age,Address,City,Zip,State")] Student student)
+        public ActionResult AddDog(int profileID, [Bind(Include = "HotDogName,LastTimeAte,LastPlaceAte,Rating")]HotDog dog)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.error = "Please check your form and resubmit";
+                return RedirectToAction("CreateDog");
+            }
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                profileService.AddDog(new Profile() { ProfileID = profileID }, dog);
+                return RedirectToAction("Details", new { id = profileID });
             }
             catch
             {
                 return View();
             }
         }
+
+     
     }
 }

@@ -35,6 +35,12 @@ namespace HotDogLover.Services
 
             profiles.Add(profile);
         }
+
+        public void AddDog(Profile profile, HotDog dog) {
+            Profile p = Get(profile.ProfileID);
+            p.HotDogList.Add(dog);
+            
+        }
         public void Remove(Profile profile)
         {
             //trap for null objects

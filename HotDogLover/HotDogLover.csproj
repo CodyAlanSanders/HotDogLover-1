@@ -161,6 +161,7 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Profile\details.cshtml" />
     <Content Include="Views\Profile\edit.cshtml" />
+    <Content Include="Views\Profile\createDog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
