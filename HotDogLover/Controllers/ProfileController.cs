@@ -1,4 +1,5 @@
-﻿using HotDogLover.Services;
+﻿using HotDogLover.Models;
+using HotDogLover.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,17 +50,20 @@ namespace HotDogLover.Controllers
         // GET: Profile/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(profileService.Get(id));
         }
 
         // POST: Profile/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        //public ActionResult Create([Bind(Include = "StudentID,Name,Email,Age,Address,City,Zip,State")] Student student)
+        public ActionResult Edit([Bind(Include="ProfileID, Name,Bio,Picture")]Profile profile)
         {
+            if (!ModelState.IsValid) {
+                return RedirectToAction("Edit", new {id=profile.ProfileID }); 
+            }
             try
             {
-                // TODO: Add update logic here
-
+                profileService.Update(profile);
                 return RedirectToAction("Index");
             }
             catch
