@@ -7,6 +7,7 @@ namespace HotDogLover.Models
 {
     public class HotDog
     {
+        public int HotDogID { get; set; }
         public string HotDogName { get; set; }
         public DateTime LastTimeAte { get; set; }
         public string LastPlaceAte { get; set; }

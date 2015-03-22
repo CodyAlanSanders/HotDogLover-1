@@ -7,6 +7,7 @@ namespace HotDogLover.Models
 {
     public class Profile
     {
+        public int ProfileID { get; set; }
         public string Name { get; set; }
         public string Bio { get; set; }
         public string Picture { get; set; }
