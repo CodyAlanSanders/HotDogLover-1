@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotDogLover.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,16 +9,19 @@ namespace HotDogLover.Controllers
 {
     public class ProfileController : Controller
     {
+        ProfileService profileService = new ProfileService();
+
         // GET: Profile
         public ActionResult Index()
         {
-            return View();
+            return View(profileService.ListAll());
         }
 
         // GET: Profile/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            HotDogLover.Models.Profile profile = profileService.Get(id);
+            return View(profile);
         }
 
         // GET: Profile/Create

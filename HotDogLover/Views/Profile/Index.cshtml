@@ -1,8 +1,14 @@
-﻿@model HotDogLover.Models.Profile
+﻿@model IEnumerable<HotDogLover.Models.Profile>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Profile List";
 }
 
 <h2>Index</h2>
+<ul>
+    @foreach (var profile in Model)
+    {
+        <li>@Html.ActionLink(profile.Name, "Details", "Profile", new { id = profile.ProfileID }, null)</li>
+    }
+</ul>
 
