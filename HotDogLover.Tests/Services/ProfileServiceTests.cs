@@ -27,21 +27,21 @@ namespace HotDogLover.Tests.Services
         [TestMethod]
         public void GetAllProfiles()
         {
-            ProfileServiceMock profileService = new ProfileServiceMock();
-            ProfileServiceMock.reload();
+            IProfileService profileService = new ProfileService();
+            //ProfileServiceMock.reload();
             List<Profile> profiles = profileService.ListAll();
             Assert.IsNotNull(profiles);
-            Assert.AreEqual(3, profiles.Count);
+            Assert.AreEqual(2, profiles.Count);
         }
         [TestMethod]
         public void GetProfile()
         {
-            ProfileServiceMock profileService = new ProfileServiceMock();
+            IProfileService profileService = new ProfileService();
             ProfileServiceMock.reload();
             Profile profile = profileService.Get(1);
             Assert.IsNotNull(profile);
-            Assert.AreEqual("Wesley Reisz", profile.Name);
-            Assert.AreEqual(3, profile.HotDogList.Count);
+            Assert.AreEqual("Wesley", profile.Name);
+            Assert.AreEqual(2, profile.HotDogList.Count);
         }
         [TestMethod]
         public void AddProfile()
