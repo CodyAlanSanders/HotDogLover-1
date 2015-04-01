@@ -6,11 +6,11 @@ using System.Web;
 
 namespace HotDogLover.Services
 {
-    public class ProfileService
+    public class ProfileServiceMock : HotDogLover.Services.IProfileService
     {
         private static List<Profile> profiles;
-        private static HotDogService hotDogService;
-        static ProfileService() {
+        private static HotDogServiceMock hotDogService;
+        static ProfileServiceMock() {
             reload();
         }
 
@@ -73,7 +73,7 @@ namespace HotDogLover.Services
         }
         public static void reload()
         {
-            hotDogService = new HotDogService();
+            hotDogService = new HotDogServiceMock();
             profiles = new List<Profile>();
 
             List<HotDog> myFavs = new List<HotDog>();

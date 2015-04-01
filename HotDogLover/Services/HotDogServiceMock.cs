@@ -6,10 +6,10 @@ using System.Web;
 
 namespace HotDogLover.Services
 {
-    public class HotDogService
+    public class HotDogServiceMock : HotDogLover.Services.IHotDogService
     {
         private static List<HotDog> hotDogs;
-        static HotDogService() {
+        static HotDogServiceMock() {
             hotDogs = new List<HotDog>();
             HotDog dog1 = new HotDog()
             {

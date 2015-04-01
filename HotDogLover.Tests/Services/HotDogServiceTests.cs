@@ -12,7 +12,7 @@ namespace HotDogLover.Tests.Services
         [TestMethod]
         public void GetAllDogsTest()
         {
-            HotDogService service = new HotDogService();
+            HotDogServiceMock service = new HotDogServiceMock();
             List<HotDog> dogs = service.listAll();
             Assert.IsNotNull(dogs);
             Assert.AreEqual(3, dogs.Count);
@@ -20,7 +20,7 @@ namespace HotDogLover.Tests.Services
         [TestMethod]
         public void GetDogTest()
         {
-            HotDogService service = new HotDogService();
+            HotDogServiceMock service = new HotDogServiceMock();
             HotDog dog = service.Get(1);
             Assert.IsNotNull(dog);
             Assert.AreEqual("Frank's All Beef Chillidawg", dog.HotDogName);

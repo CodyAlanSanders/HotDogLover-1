@@ -12,8 +12,8 @@ namespace HotDogLover.Tests.Services
         [TestMethod]
         public void UpdateProfile()
         {
-            ProfileService profileService = new ProfileService();
-            ProfileService.reload();
+            ProfileServiceMock profileService = new ProfileServiceMock();
+            ProfileServiceMock.reload();
             Profile edittedProfile = profileService.Get(1);
             edittedProfile.Name = "Joey";
             profileService.Update(edittedProfile);
@@ -27,8 +27,8 @@ namespace HotDogLover.Tests.Services
         [TestMethod]
         public void GetAllProfiles()
         {
-            ProfileService profileService = new ProfileService();
-            ProfileService.reload();
+            ProfileServiceMock profileService = new ProfileServiceMock();
+            ProfileServiceMock.reload();
             List<Profile> profiles = profileService.ListAll();
             Assert.IsNotNull(profiles);
             Assert.AreEqual(3, profiles.Count);
@@ -36,8 +36,8 @@ namespace HotDogLover.Tests.Services
         [TestMethod]
         public void GetProfile()
         {
-            ProfileService profileService = new ProfileService();
-            ProfileService.reload();
+            ProfileServiceMock profileService = new ProfileServiceMock();
+            ProfileServiceMock.reload();
             Profile profile = profileService.Get(1);
             Assert.IsNotNull(profile);
             Assert.AreEqual("Wesley Reisz", profile.Name);
@@ -46,8 +46,8 @@ namespace HotDogLover.Tests.Services
         [TestMethod]
         public void AddProfile()
         {
-            ProfileService profileService = new ProfileService();
-            ProfileService.reload();
+            ProfileServiceMock profileService = new ProfileServiceMock();
+            ProfileServiceMock.reload();
             Profile profile = profileService.Get(1);
             profile.Name = "Big Ol test";
             int newId = 100;
