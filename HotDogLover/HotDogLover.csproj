@@ -119,6 +119,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\SampleController.cs" />
     <Compile Include="dal\HotDog.cs">
       <DependentUpon>HotDogModel.tt</DependentUpon>
     </Compile>
@@ -146,10 +147,13 @@
     <Compile Include="Models\HotDog.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\HotDogService.cs" />
     <Compile Include="Services\HotDogServiceMock.cs" />
     <Compile Include="Services\IHotDogService.cs" />
+    <Compile Include="Services\ProfileService.cs" />
     <Compile Include="Services\ProfileServiceMock.cs" />
     <Compile Include="Services\IProfileService.cs" />
+    <Compile Include="utils\MappingUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -208,6 +212,11 @@
     <Content Include="Views\Profile\details.cshtml" />
     <Content Include="Views\Profile\edit.cshtml" />
     <Content Include="Views\Profile\createDog.cshtml" />
+    <Content Include="Views\Sample\Create.cshtml" />
+    <Content Include="Views\Sample\Delete.cshtml" />
+    <Content Include="Views\Sample\Details.cshtml" />
+    <Content Include="Views\Sample\Edit.cshtml" />
+    <Content Include="Views\Sample\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

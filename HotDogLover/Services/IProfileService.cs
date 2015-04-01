@@ -1,7 +1,7 @@
 ﻿using System;
 namespace HotDogLover.Services
 {
-    interface IProfileService
+    public interface IProfileService
     {
         void Add(HotDogLover.Models.Profile profile);
         void AddDog(HotDogLover.Models.Profile profile, HotDogLover.Models.HotDog dog);
