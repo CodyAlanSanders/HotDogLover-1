@@ -10,7 +10,7 @@ namespace HotDogLover.Controllers
 {
     public class ProfileController : Controller
     {
-        ProfileService profileService = new ProfileService();
+        IProfileService profileService = new ProfileService();
 
         // GET: Profile
         public ActionResult Index()

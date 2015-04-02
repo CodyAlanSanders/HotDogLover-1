@@ -12,8 +12,8 @@ namespace HotDogLover.Tests.Services
         [TestMethod]
         public void UpdateProfile()
         {
-            ProfileService profileService = new ProfileService();
-            ProfileService.reload();
+            ProfileServiceMock profileService = new ProfileServiceMock();
+            ProfileServiceMock.reload();
             Profile edittedProfile = profileService.Get(1);
             edittedProfile.Name = "Joey";
             profileService.Update(edittedProfile);
@@ -27,27 +27,27 @@ namespace HotDogLover.Tests.Services
         [TestMethod]
         public void GetAllProfiles()
         {
-            ProfileService profileService = new ProfileService();
-            ProfileService.reload();
+            IProfileService profileService = new ProfileService();
+            ProfileServiceMock.reload();
             List<Profile> profiles = profileService.ListAll();
             Assert.IsNotNull(profiles);
-            Assert.AreEqual(3, profiles.Count);
+            Assert.AreEqual(1, profiles.Count);
         }
         [TestMethod]
         public void GetProfile()
         {
-            ProfileService profileService = new ProfileService();
-            ProfileService.reload();
+            IProfileService profileService = new ProfileService();
+            ProfileServiceMock.reload();
             Profile profile = profileService.Get(1);
             Assert.IsNotNull(profile);
-            Assert.AreEqual("Wesley Reisz", profile.Name);
-            Assert.AreEqual(3, profile.HotDogList.Count);
+            Assert.AreEqual("Wes", profile.Name);
+            Assert.AreEqual(2, profile.HotDogList.Count);
         }
         [TestMethod]
         public void AddProfile()
         {
-            ProfileService profileService = new ProfileService();
-            ProfileService.reload();
+            ProfileServiceMock profileService = new ProfileServiceMock();
+            ProfileServiceMock.reload();
             Profile profile = profileService.Get(1);
             profile.Name = "Big Ol test";
             int newId = 100;

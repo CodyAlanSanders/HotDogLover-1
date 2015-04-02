@@ -39,10 +39,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -113,6 +119,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\SampleController.cs" />
+    <Compile Include="dal\HotDog.cs">
+      <DependentUpon>HotDogModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dal\HotDogModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotDogModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dal\HotDogModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotDogModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dal\HotDogModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotDogModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="dal\Profile.cs">
+      <DependentUpon>HotDogModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -120,17 +148,39 @@
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\HotDogService.cs" />
+    <Compile Include="Services\IProfileService.cs" />
     <Compile Include="Services\ProfileService.cs" />
+    <Compile Include="Services\ProfileServiceMock.cs" />
+    <Compile Include="Utils\ViewModelUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="dal\HotDogModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotDogModel.edmx</DependentUpon>
+      <LastGenOutput>HotDogModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="dal\HotDogModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotDogModel.edmx</DependentUpon>
+      <LastGenOutput>HotDogModel.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="dal\HotDogModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HotDogModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="dal\HotDogModel.edmx.diagram">
+      <DependentUpon>HotDogModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\inclass-hotdog %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\inclass-hotdog.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -162,6 +212,11 @@
     <Content Include="Views\Profile\details.cshtml" />
     <Content Include="Views\Profile\edit.cshtml" />
     <Content Include="Views\Profile\createDog.cshtml" />
+    <Content Include="Views\Sample\Create.cshtml" />
+    <Content Include="Views\Sample\Delete.cshtml" />
+    <Content Include="Views\Sample\Details.cshtml" />
+    <Content Include="Views\Sample\Edit.cshtml" />
+    <Content Include="Views\Sample\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -172,6 +227,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
